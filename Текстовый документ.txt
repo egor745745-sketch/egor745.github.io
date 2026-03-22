@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Приглашение на нашу свадьбу</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #fdf7f2;
+      --accent: #d9a7c7;
+      --accent-dark: #b5769b;
+      --text: #3b3b3b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 16px 32px;
+      background: linear-gradient(135deg, #fff, #fbe9f4);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before, header::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(217,167,199,0.18);
+      filter: blur(18px);
+    }
+
+    header::before {
+      width: 220px; height: 220px;
+      top: -80px; left: -60px;
+    }
+
+    header::after {
+      width: 260px; height: 260px;
+      bottom: -120px; right: -80px;
+    }
+
+    .header-content { position: relative; z-index: 1; }
+
+    .tagline {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-dark);
+      margin-bottom: 12px;
+    }
+
+    .names {
+      font-size: 42px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .date {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .place-city {
+      font-size: 16px;
+      color: #888;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 24px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--accent-dark);
+    }
+
+    p { margin-bottom: 10px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 18px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 0;
+      border-bottom: 1px dashed #eee;
+      font-size: 15px;
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f7e8f2;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-dark);
+      margin-bottom: 10px;
+    }
+
+    .timeline-item {
+      margin-bottom: 10px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: 0; top: 7px;
+    }
+
+    .timeline-time {
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .map-link a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .map-link a:hover { text-decoration: underline; }
+
+    .rsvp-box {
+      border-radius: 18px;
+      background: #fdf0f6;
+      padding: 16px 14px;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-dark);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(181,118,155,0.4);
+    }
+
+    .btn-primary:hover {
+      background: #9f5e87;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(181,118,155,0.45);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--accent-dark);
+      color: var(--accent-dark);
+      background: transparent;
+    }
+
+    .btns-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .faq-item {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .faq-item strong { display: block; }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 32px 14px 24px; }
+      .names { font-size: 32px; }
+      .grid-2 { grid-template-columns: minmax(0,1fr); }
+      section { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="header-content">
+        <div class="tagline">Свадебное приглашение</div>
+        <div class="names">Анна &amp; Илья</div>
+        <div class="date">15 августа 2026 • 15:00</div>
+        <div class="place-city">Санкт‑Петербург</div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Дорогие родные и друзья!</h2>
+      <p>
+        Мы рады сообщить, что совсем скоро состоится самый важный день в нашей жизни — день нашей свадьбы.
+        Будем счастливы разделить этот праздник вместе с вами.
+      </p>
+      <p>
+        На этой странице вы найдете всю информацию о времени, месте и формате торжества, а также сможете подтвердить своё присутствие.
+      </p>
+    </section>
+
+    <section class="grid-2">
+      <div>
+        <div class="badge">Где и когда</div>
+        <h2>Детали события</h2>
+
+        <div class="info-row">
+          <span>Дата</span>
+          <span>15 августа 2026 (суббота)</span>
+        </div>
+        <div class="info-row">
+          <span>Сбор гостей</span>
+          <span>14:30</span>
+        </div>
+        <div class="info-row">
+          <span>Церемония</span>
+          <span>15:00</span>
+        </div>
+        <div class="info-row">
+          <span>Банкет</span>
+          <span>17:00 – 23:00</span>
+        </div>
+        <div class="info-row">
+          <span>Локация</span>
+          <span>Ресторан «Набережный», наб. реки Фонтанки, 12</span>
+        </div>
+
+        <p class="map-link" style="margin-top: 10px;">
+          <a href="https://maps.google.com" target="_blank" rel="noopener">
+            Открыть локацию на карте
+          </a>
+        </p>
+      </div>
+
+      <div>
+        <div class="badge">Программа дня</div>
+        <div class="timeline-item">
+          <span class="timeline-time">14:30</span>
+          Встреча гостей, welcome‑фуршет
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">15:00</span>
+          Торжественная церемония
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">17:00</span>
+          Праздничный ужин и программа
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">21:30</span>
+          Танцы, торт и вечерние сюрпризы
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="badge">Дресс‑код</div>
+      <h2>Стиль свадьбы</h2>
+      <p>
+        Формат торжества — лёгкая вечерняя классика. Мы будем рады, если ваши образы поддержат нежную цветовую гамму: пастельные оттенки, бежевый, пудровый, серо‑голубой.
+      </p>
+      <p>
+        Пожалуйста, избегайте ярко‑красного и полностью белого наряда — этот цвет мы оставим для невесты.
+      </p>
+    </section>
+
+    <section>
+      <div class="badge">Подарки</div>
+      <h2>Немного о подарках</h2>
+      <p>
+        Главное для нас — ваше присутствие. Если вы захотите порадовать нас подарком, мы будем благодарны вкладу в наше совместное путешествие и будущий дом в виде конверта.
+      </p>
+    </section>
+
+    <section>
+      <div class="badge">Важная информация</div>
+      <h2>Ответы на вопросы</h2>
+
+      <div class="faq-item">
+        <strong>Можно ли прийти с парой или детьми?</strong>
+        По возможности укажите, пожалуйста, в ответе на приглашение, будете ли вы с спутником/спутницей и детьми, чтобы мы могли учесть это при рассадке.
+      </div>
+
+      <div class="faq-item">
+        <strong>До какого числа нужно подтвердить участие?</strong>
+        Нам важно знать окончательное количество гостей до 1 июля 2026 года.
+      </div>
+
+      <div class="faq-item">
+        <strong>Фотографии с праздника</strong>
+        После свадьбы мы отправим ссылку на общий фотоальбом в тот же мессенджер, куда придёт приглашение.
+      </div>
+    </section>
+
+    <section>
+      <div class="badge">RSVP</div>
+      <h2>Подтвердите, пожалуйста, присутствие</h2>
+      <p>
+        Чтобы нам было проще всё организовать, пожалуйста, дайте ответ до 1 июля 2026 года любым удобным способом:
+      </p>
+
+      <div class="rsvp-box">
+        <p><strong>Написать в WhatsApp:</strong> <a href="https://wa.me/79990000000" target="_blank" rel="noopener">+7&nbsp;999&nbsp;000‑00‑00</a></p>
+        <p><strong>Позвонить:</strong> Анна — +7&nbsp;999&nbsp;111‑11‑11, Илья — +7&nbsp;999&nbsp;222‑22‑22</p>
+        <p><strong>Ответ в один клик:</strong> нажмите одну из кнопок ниже (можно заменить на форму Google/Яндекс).</p>
+        <div class="btns-row">
+          <a class="btn btn-primary" href="#" onclick="alert('Спасибо! Мы очень рады, что вы будете с нами в этот день ❤️'); return false;">Я приду</a>
+          <a class="btn btn-outline" href="#" onclick="alert('Спасибо за ответ! Нам будет не хватать вас в этот день 💌'); return false;">Не смогу прийти</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      С любовью, Анна и Илья • 2026
+    </footer>
+  </div>
+</body>
+</html>
